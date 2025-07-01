@@ -4,7 +4,7 @@ version: "3"
 services:
   dummy-fabricstudio:
     image: nginx:alpine
-    container_name: dummy-fabricstudio
+    container_name: dummy-fgt
     environment:
       - VIRTUAL_HOST=fgt.itsmillan.com
       - LETSENCRYPT_HOST=fgt.itsmillan.com
