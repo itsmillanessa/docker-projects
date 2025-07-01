@@ -1,0 +1,9 @@
+# Archivos sensibles
+*.crt
+*.key
+*.pem
+.env
+
+# Directorios donde suelen estar tus certs
+core/certs/
+certs/
