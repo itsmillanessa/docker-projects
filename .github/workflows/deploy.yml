@@ -1,0 +1,22 @@
+name: Despliegue automático a Docker Host
+
+on:
+  push:
+    branches: [main]
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Conectar por SSH y hacer pull
+      uses: appleboy/ssh-action@v1.0.3
+      with:
+        host: 172.16.31.103              # <-- tu IP interna o pública
+        username: amillan                 # <-- tu usuario de Lubuntu
+        key: ${{ secrets.SSH_KEY }}
+        port: 22
+        script: |
+          cd /home/amillan/infraestructure
+          git pull
+          docker-compose -f core/docker-compose.yml up -d
