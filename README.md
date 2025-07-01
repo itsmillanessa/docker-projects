@@ -12,6 +12,10 @@ haproxy-tcp/ # Redirección TCP a múltiples puertos para VMs
 html-shared/ # Archivos estáticos para validación ACME (Let's Encrypt)
 services/ # Aplicaciones como n8n, Portainer, etc.
 
+yaml
+Copiar
+Editar
+
 ---
 
 ## 🚀 ¿Cómo levantar?
@@ -48,3 +52,4 @@ Acceso a FortiDDNS o dominio propio (opcional)
 Este proyecto es parte de mi laboratorio y entorno personal.
 Si tienes dudas o quieres ideas de despliegue similar, abre un issue o mándame un mensaje.
 
+🧠 Made with seguridad, automatización y café ☕ by @itsmillanessa
