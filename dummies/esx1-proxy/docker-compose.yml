@@ -1,0 +1,19 @@
+version: "3.7"
+
+services:
+  esx1-proxy:
+    image: nginx:alpine
+    container_name: esx1-proxy
+    restart: always
+    networks:
+      - nginx-net
+    environment:
+      - VIRTUAL_HOST=esx1.itsmillan.com
+      - LETSENCRYPT_HOST=esx1.itsmillan.com
+      - LETSENCRYPT_EMAIL=admin@itsmillan.com
+    volumes:
+      - ./default.conf:/etc/nginx/conf.d/default.conf:ro
+
+networks:
+  nginx-net:
+    external: true

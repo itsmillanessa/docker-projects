@@ -1,0 +1,19 @@
+# services/fabricstudio/docker-compose.yml
+version: "3"
+
+services:
+  dummy-fabricstudio:
+    image: nginx:alpine
+    container_name: dummy-fabricstudio
+    environment:
+      - VIRTUAL_HOST=fabricstudio.itsmillan.com
+      - LETSENCRYPT_HOST=fabricstudio.itsmillan.com
+      - LETSENCRYPT_EMAIL=admin@itsmillan.com
+    networks:
+      - nginx-net
+    expose:
+      - "80"
+
+networks:
+  nginx-net:
+    external: true

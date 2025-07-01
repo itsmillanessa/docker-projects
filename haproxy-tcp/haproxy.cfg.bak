@@ -1,0 +1,28 @@
+global
+  log stdout format raw local0
+  maxconn 2048
+  daemon
+
+defaults
+  log global
+  mode tcp
+  option tcplog
+  timeout connect 5s
+  timeout client  1m
+  timeout server  1m
+
+frontend https_frontend
+  bind *:443
+  tcp-request inspect-delay 5s
+  tcp-request content accept if { req.ssl_hello_type 1 }
+
+  use_backend esx1_backend if { req_ssl_sni -i esx1.itsmillan.com }
+  use_backend esx2_backend if { req_ssl_sni -i esx2.itsmillan.com }
+
+backend esx1_backend
+  mode tcp
+  server esx1 172.16.31.100:443
+
+backend esx2_backend
+  mode tcp
+  server esx2 172.16.31.150:443
